@@ -200,11 +200,49 @@ if (typeof window.Lenis !== 'undefined') {
 (function () {
   const form = document.getElementById('contact-form');
   const succ = document.getElementById('success-message');
+  const status = document.getElementById('form-status');
   if (!form) return;
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
-    form.style.display = 'none';
-    succ && (succ.classList.add('show'));
+    const endpoint = window.APP_CONFIG && window.APP_CONFIG.googleAppsScriptUrl;
+    if (!endpoint) {
+      if (status) {
+        status.textContent = 'This form is not connected yet. Please try again later or call us directly.';
+        status.className = 'form-status error';
+      }
+      return;
+    }
+
+    const submitButton = form.querySelector('button[type="submit"]');
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending...';
+    }
+    if (status) {
+      status.textContent = 'Sending your enquiry...';
+      status.className = 'form-status';
+    }
+
+    try {
+      // Google Apps Script does not expose CORS headers, so this request is sent
+      // as a simple form POST. A successful fetch means the submission reached it.
+      await fetch(endpoint, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: new URLSearchParams(new FormData(form))
+      });
+      form.style.display = 'none';
+      succ && (succ.classList.add('show'));
+    } catch (error) {
+      if (status) {
+        status.textContent = 'We could not send your enquiry. Please try again or call us directly.';
+        status.className = 'form-status error';
+      }
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = "✉ Send Enquiry — We'll Respond in 2 Hours";
+      }
+    }
   });
 })();
 

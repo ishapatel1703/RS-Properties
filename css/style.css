@@ -956,6 +956,9 @@ section { padding: 5rem 0; }
 .form-group select:focus,
 .form-group textarea:focus { outline:none; border-color:var(--primary); }
 .form-group textarea { resize:vertical; min-height:120px; }
+.form-trap { position:absolute; left:-10000px; width:1px; height:1px; overflow:hidden; }
+.form-status { min-height:1.2em; margin-top:.75rem; text-align:center; font-size:.82rem; color:var(--muted); }
+.form-status.error { color:#b91c1c; }
 
 .success-message {
   display:none; background:#f0fdf4; border:1px solid #bbf7d0;
