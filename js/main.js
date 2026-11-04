@@ -1,5 +1,5 @@
 /* ============================================================
-   Jabalpur Magic Property — Main JavaScript
+   RS Properties — Main JavaScript
    ============================================================ */
 
 /* ── NAVBAR ── */
@@ -10,10 +10,17 @@
   const close   = document.querySelector('.mobile-close');
   if (!nav) return;
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 30) nav.classList.add('scrolled'), nav.classList.remove('transparent');
-    else                      nav.classList.remove('scrolled'), nav.classList.add('transparent');
-  });
+  const currentPage = location.pathname.split('/').pop() || 'index.html';
+  const isHomePage = currentPage === '' || currentPage === 'index.html';
+  if (isHomePage) {
+    const syncNavState = () => {
+      if (window.scrollY > 30) nav.classList.add('scrolled'), nav.classList.remove('transparent');
+      else                      nav.classList.remove('scrolled'), nav.classList.add('transparent');
+    };
+    syncNavState();
+    window.addEventListener('scroll', syncNavState, { passive: true });
+    window.addEventListener('pageshow', syncNavState);
+  }
 
   if (toggle && menu) {
     toggle.addEventListener('click', () => {
@@ -240,16 +247,69 @@ if (typeof window.Lenis !== 'undefined') {
       }
       if (submitButton) {
         submitButton.disabled = false;
-        submitButton.textContent = "✉ Send Enquiry — We'll Respond in 2 Hours";
+        submitButton.textContent = "✉ Send Enquiry";
       }
     }
   });
 })();
 
-/* ── SEARCH TABS ── */
-document.querySelectorAll('.search-tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.search-tab').forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
+/* â”€â”€ PROJECT SEARCH â”€â”€ */
+(function () {
+  const tabs = Array.from(document.querySelectorAll('.search-tab[data-project]'));
+  const projectSelect = document.getElementById('hero-project');
+  const projectType = document.getElementById('hero-project-type');
+  const interestSelect = document.getElementById('hero-interest');
+  const searchButton = document.getElementById('hero-search');
+
+  const projectInfo = {
+    'nature-view-farm': { type: 'Farmland', page: 'nature-view-farm.html', service: 'Farmland Sales' },
+    'shree-ramlala-parisar': { type: 'Residential Plots', page: 'shree-ramlala-parisar.html', service: 'Residential Plot Sales' }
+  };
+
+  if (projectSelect && searchButton) {
+  function selectProject(project) {
+    if (!projectInfo[project]) return;
+    projectSelect.value = project;
+    if (projectType) projectType.value = projectInfo[project].type;
+    tabs.forEach(tab => {
+      const active = tab.dataset.project === project;
+      tab.classList.toggle('active', active);
+      tab.setAttribute('aria-selected', String(active));
+    });
+  }
+
+  tabs.forEach(tab => tab.addEventListener('click', () => selectProject(tab.dataset.project)));
+  projectSelect.addEventListener('change', () => selectProject(projectSelect.value));
+  searchButton.addEventListener('click', () => {
+    const project = projectSelect.value;
+    const info = projectInfo[project];
+    if (!info) return;
+    const interest = interestSelect ? interestSelect.value : 'details';
+    if (interest === 'details') {
+      window.location.href = info.page;
+      return;
+    }
+    const query = new URLSearchParams({ project: project, interest: interest });
+    window.location.href = `contact.html?${query.toString()}`;
   });
-});
+  }
+
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    const params = new URLSearchParams(window.location.search);
+    const project = params.get('project');
+    const interest = params.get('interest');
+    const info = projectInfo[project];
+    if (info && interest) {
+      const interestLabels = {
+        'site-visit': 'Arrange a site visit',
+        availability: 'Ask about current availability',
+        investment: 'Investment consultation'
+      };
+      const message = document.getElementById('contact-message');
+      const service = document.getElementById('contact-service');
+      if (service) service.value = interest === 'site-visit' ? 'Site Visit Assistance' : interest === 'investment' ? 'Investment Consultation' : info.service;
+      if (message) message.value = `Project: ${project === 'nature-view-farm' ? 'Nature View Farm' : 'Shree Ramlala Parisar'}\nEnquiry: ${interestLabels[interest] || 'Project information'}`;
+    }
+  }
+})();
