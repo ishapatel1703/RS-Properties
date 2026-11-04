@@ -60,7 +60,12 @@
     dots[current] && dots[current].classList.remove('active');
     current = (n + slides.length) % slides.length;
     slides[current].classList.add('active');
-    dots[current] && dots[current].classList.add('active');
+    slides.forEach((slide, index) => slide.setAttribute('aria-hidden', String(index !== current)));
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === current);
+      if (index === current) dot.setAttribute('aria-current', 'true');
+      else dot.removeAttribute('aria-current');
+    });
   }
 
   function start() { timer = setInterval(() => goTo(current + 1), 10000); }
@@ -148,15 +153,20 @@ if (typeof window.Lenis !== 'undefined') {
 
   function goTo(n) {
     slides[current].classList.remove('active');
-    dots[current] && dots[current].classList.remove('active');
     current = (n + slides.length) % slides.length;
     slides[current].classList.add('active');
-    dots[current] && dots[current].classList.add('active');
+    slides.forEach((slide, index) => slide.setAttribute('aria-hidden', String(index !== current)));
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === current);
+      if (index === current) dot.setAttribute('aria-current', 'true');
+      else dot.removeAttribute('aria-current');
+    });
   }
 
   function start() { timer = setInterval(() => goTo(current + 1), 5000); }
   function reset() { clearInterval(timer); start(); }
 
+  goTo(current);
   start();
 
   const prev = document.querySelector('.t-arrow.prev');
@@ -256,7 +266,6 @@ if (typeof window.Lenis !== 'undefined') {
 /* â”€â”€ PROJECT SEARCH â”€â”€ */
 (function () {
   const tabs = Array.from(document.querySelectorAll('.search-tab[data-project]'));
-  const projectSelect = document.getElementById('hero-project');
   const projectType = document.getElementById('hero-project-type');
   const interestSelect = document.getElementById('hero-interest');
   const searchButton = document.getElementById('hero-search');
@@ -266,10 +275,9 @@ if (typeof window.Lenis !== 'undefined') {
     'shree-ramlala-parisar': { type: 'Residential Plots', page: 'shree-ramlala-parisar.html', service: 'Residential Plot Sales' }
   };
 
-  if (projectSelect && searchButton) {
+  if (searchButton) {
   function selectProject(project) {
     if (!projectInfo[project]) return;
-    projectSelect.value = project;
     if (projectType) projectType.value = projectInfo[project].type;
     tabs.forEach(tab => {
       const active = tab.dataset.project === project;
@@ -279,9 +287,8 @@ if (typeof window.Lenis !== 'undefined') {
   }
 
   tabs.forEach(tab => tab.addEventListener('click', () => selectProject(tab.dataset.project)));
-  projectSelect.addEventListener('change', () => selectProject(projectSelect.value));
   searchButton.addEventListener('click', () => {
-    const project = projectSelect.value;
+    const project = tabs.find(tab => tab.classList.contains('active'))?.dataset.project;
     const info = projectInfo[project];
     if (!info) return;
     const interest = interestSelect ? interestSelect.value : 'details';
