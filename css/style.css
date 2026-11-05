@@ -625,7 +625,7 @@ section { padding: 5rem 0; }
 }
 .mosaic-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
 .mosaic-item:hover img { transform: scale(1.04); }
-.mosaic-large { aspect-ratio: 3/4; grid-row: span 2; }
+.mosaic-large { aspect-ratio: 13/20; grid-row: span 2; }
 .mosaic-sm { aspect-ratio: 4/3; }
 
 /* ============================================================
@@ -1429,7 +1429,7 @@ section { padding: 5rem 0; }
     gap: .65rem;
   }
 
-  .mosaic-large { grid-column: span 2; }
+  .mosaic-large { grid-column: span 2; grid-row: auto; aspect-ratio: 3/4; }
 
   .steps-grid { grid-template-columns: 1fr; }
 
@@ -1521,8 +1521,16 @@ section { padding: 5rem 0; }
 
   .stat-item:last-child { border-bottom: 0; }
   .photo-mosaic { grid-template-columns: 1fr; }
-  .mosaic-large { grid-column: auto; }
+  .mosaic-large { grid-column: auto; grid-row: auto; }
   .spec { min-width: 100%; }
+}
+
+@media(max-width:620px){
+  .photo-mosaic .mosaic-large {
+    grid-row: auto;
+    aspect-ratio: 3/4;
+    transform: none;
+  }
 }
 
 /* Properties dropdown navigation */
@@ -1663,7 +1671,7 @@ section { padding: 5rem 0; }
 .nature-life-intro .section-title { margin: .5rem 0 0; color: #f8f6ed; }
 .nature-life-intro .section-sub { max-width: 430px; margin: 0 0 .35rem; color: rgba(248,246,237,.72); }
 .nature-life-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem; }
-.nature-life-card { position: relative; display: flex; min-height: 320px; align-items: end; overflow: hidden; isolation: isolate; padding: 1.3rem; border: 1px solid rgba(255,255,255,.15); border-radius: 18px; background: #335447 var(--life-image) center / cover no-repeat; }
+.nature-life-card { position: relative; display: flex; min-height: 320px; align-items: end; overflow: hidden; isolation: isolate; padding: 1.3rem; border: 1px solid rgba(255,255,255,.15); border-radius: 18px; background: #335447 center / cover no-repeat; }
 .nature-life-card::before { position: absolute; z-index: -1; inset: 0; background: linear-gradient(180deg,rgba(8,24,19,.05) 15%,rgba(8,24,19,.88) 100%); content: ""; transition: background .25s ease; }
 .nature-life-card:hover::before { background: linear-gradient(180deg,rgba(8,24,19,.08) 5%,rgba(8,24,19,.94) 100%); }
 .life-icon { position: absolute; top: 1rem; right: 1rem; display: grid; width: 2.6rem; height: 2.6rem; place-items: center; border-radius: 50%; color: #102b24; background: #dce6bd; font-size: 1.15rem; font-weight: 800; }
@@ -1730,6 +1738,45 @@ section { padding: 5rem 0; }
   .contact-hero-actions .btn-primary, .contact-hero-whatsapp { font-size: .64rem; padding-inline: .35rem; }
 }
 
+/* Final small-screen layout refinements across the site. */
+@media(max-width:640px) {
+  .about-grid { gap: 2.25rem !important; }
+  .about-grid > div:last-child { margin: 0 .4rem .5rem 0; }
+  .about-grid > div:last-child > div {
+    right: .5rem !important;
+    bottom: -.5rem !important;
+    max-width: calc(100% - .5rem);
+    padding: .9rem 1rem !important;
+  }
+
+  .why-inner { gap: 2.25rem; }
+  .photo-mosaic { width: 100%; max-width: 100%; }
+
+  .gallery-bottom {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .65rem;
+    height: auto;
+  }
+  .gallery-bottom .gallery-item { min-width: 0; min-height: 145px; }
+
+  .project-next-steps { gap: 1.25rem; }
+  .project-next-steps > div { flex-basis: 100%; }
+  .project-next-steps .btn { width: 100%; }
+
+  .timeline-content { min-width: 0; padding: 1.15rem; }
+  .timeline-content p { overflow-wrap: anywhere; }
+  .ci-card { padding: 1rem .75rem; }
+}
+
+@media(max-width:380px) {
+  .gallery-bottom .gallery-item { min-height: 125px; }
+  .timeline-content { padding: 1rem .85rem; }
+  .project-feature-overlay { padding: 1.1rem; }
+  .contact-hero-highlights span { font-size: .6rem; }
+  .contact-hero-actions .btn-primary,
+  .contact-hero-whatsapp { font-size: .67rem; }
+}
+
 
 /* Success Stories: featured client carousel */
 .testimonials-section { position: relative; overflow: hidden; padding: clamp(4rem,7vw,6.5rem) 0; color: #fff; background: radial-gradient(ellipse at 12% 12%, rgba(46,111,103,.32), transparent 38%), linear-gradient(135deg,#06243d 0%,#0d3a43 100%); }
@@ -1766,3 +1813,16 @@ section { padding: 5rem 0; }
 .stories-cta .btn-primary:hover { background: #f2d77f; }
 @media(max-width:899px) { .testimonials-section .testimonial-carousel { padding: 0 2.75rem; } }
 @media(max-width:640px) { .testimonials-section { padding: 3.5rem 0; } .testimonials-section .section-title { font-size: clamp(1.55rem,7vw,2.3rem); } .testimonials-section .section-sub { padding: .85rem .25rem 0; } .testimonials-section .testimonial-carousel { margin-top: 1.5rem; padding: 0; } .testimonials-section .testimonial-slide { min-height: 0; padding: 1.5rem; border-radius: 18px; } .testimonials-section .testimonial-quote { top: -.15rem; right: .65rem; font-size: 7rem; } .testimonials-section .testimonial-text { font-size: 1rem; } .testimonials-section .t-arrows { display: none; } .stories-cta { flex-direction: column; text-align: center; } .stories-cta .btn-primary { width: 100%; justify-content: center; } }
+
+
+/* Services planning visual */
+.service-planning-section { padding: clamp(3.5rem,7vw,6rem) 0; background: #f5f6fa; }
+.service-planning-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(280px,.9fr); align-items: center; gap: clamp(2rem,5vw,5rem); }
+.service-planning-copy .section-title { max-width: 620px; margin: .45rem 0 .8rem; }
+.service-planning-copy .section-sub { max-width: 600px; margin-bottom: 1.35rem; }
+.service-planning-copy .btn { display: inline-flex; align-items: center; gap: .55rem; }
+.service-planning-visual { position: relative; margin: 0; overflow: hidden; border-radius: 20px; background: #17344b; box-shadow: 0 18px 42px rgba(3,33,61,.16); }
+.service-planning-visual img { display: block; width: 100%; aspect-ratio: 1.35; object-fit: cover; }
+.service-planning-visual figcaption { padding: .55rem .85rem; color: rgba(255,255,255,.8); background: rgba(3,33,61,.9); font-size: .72rem; }
+@media(max-width:800px) { .service-planning-grid { grid-template-columns: 1fr; gap: 1.5rem; } .service-planning-visual { max-width: 640px; } }
+@media(max-width:640px) { .service-planning-copy .btn { width: 100%; justify-content: center; } }
