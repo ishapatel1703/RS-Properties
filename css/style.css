@@ -397,6 +397,7 @@ Full websites font
    SECTIONS
    ============================================================ */
 section { padding: 5rem 0; }
+.home-services-section { padding: 3.5rem 0 6.5rem; }
 
 /* ============================================================
    PROPERTY CARD — 3 per row on desktop
@@ -485,7 +486,7 @@ section { padding: 5rem 0; }
 
 .service-img-card {
   position: relative; border-radius: var(--radius-lg);
-  overflow: hidden; height: 240px; cursor: pointer;
+  overflow: hidden; height: 345px; cursor: pointer;
 }
 .service-img-card img {
   width: 100%; height: 100%; object-fit: cover;
@@ -519,6 +520,8 @@ section { padding: 5rem 0; }
   transition: all .3s;
 }
 .service-img-card:hover .service-arrow { opacity: 1; transform: translateY(0); }
+
+@media(max-width:599px){ .service-img-card { height: 300px; } }
 
 /* ============================================================
    LOCALITY CARDS
@@ -700,9 +703,21 @@ section { padding: 5rem 0; }
 .partners-section { background: var(--light); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 3rem 0; }
 .partners-label { text-align: center; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin-bottom: 2rem; }
 .partners-logos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 2.5rem; }
-.partner-logo { opacity: .5; transition: opacity var(--transition); filter: grayscale(1); }
-.partner-logo:hover { opacity: 1; filter: grayscale(0); }
-.partner-logo span { font-size: .95rem; font-weight: 700; color: var(--primary); }
+.partner-logo {
+  display: inline-flex; align-items: center; gap: .45rem;
+  white-space: nowrap; opacity: .86; transition: opacity var(--transition), transform var(--transition);
+}
+.partner-logo:hover { opacity: 1; transform: translateY(-2px); }
+.partner-mark { font-size: 1.18rem; font-weight: 800; letter-spacing: -.045em; line-height: 1; }
+.partner-name { font-size: .64rem; font-weight: 700; letter-spacing: .035em; line-height: 1.05; }
+.partner-sbi { color: #22409a; }
+.partner-sbi .partner-mark { width: 34px; height: 34px; display: inline-grid; place-items: center; border: 2px solid currentColor; border-radius: 50%; font-size: .57rem; letter-spacing: -.06em; }
+.partner-hdfc { color: #004b8d; }
+.partner-icici { color: #ae282e; }
+.partner-axis { color: #971a4d; }
+.partner-axis .partner-mark { font-style: italic; }
+.partner-pnb { color: #7b1f36; }
+.partner-lic { color: #173e77; }
 
 /* ============================================================
    CTA SECTION
@@ -1277,6 +1292,7 @@ section { padding: 5rem 0; }
 
   .container { padding: 0 1rem; }
   section { padding: 3.25rem 0; }
+  .home-services-section { padding: 2.75rem 0 3.75rem; }
   .section-header { margin-bottom: 2.2rem; }
   .section-sub { font-size: .96rem; }
 
@@ -1315,6 +1331,8 @@ section { padding: 5rem 0; }
   }
 
   .search-panel {
+    width: 100%;
+    max-width: 440px;
     border-radius: 16px;
     margin-top: 1.4rem !important;
   }
@@ -1332,14 +1350,20 @@ section { padding: 5rem 0; }
   }
   .search-tab {
     min-width: max-content;
-    padding: .85rem .9rem;
-    font-size: .8rem;
+    padding: .65rem .7rem;
+    font-size: .74rem;
   }
 
   .search-inputs {
     grid-template-columns: 1fr;
-    padding: .85rem;
+    padding: .65rem;
+    gap: .55rem;
   }
+
+  .search-field select,
+  .search-field input,
+  .search-btn { height: 38px; font-size: .8rem; }
+  .search-btn { padding-inline: 1rem; }
 
   .hero-trust span {
     flex-basis: 100%;
