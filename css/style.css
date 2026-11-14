@@ -2143,3 +2143,111 @@ section { padding: 5rem 0; }
 .project-page-hero .page-hero-tag { color: #fff; }
 
 .project-page-hero .nature-view-title { color: #d4ad55; }
+
+/* Slightly smaller homepage hero paragraph on mobile only. */
+@media (max-width: 640px) {
+  .hero .hero-sub { font-size: .86rem; }
+}
+
+/* Cycle the homepage hero through its property offerings in the gold accent. */
+.hero-offer-rotator { display: inline-grid; vertical-align: baseline; color: #d4ad55; font-weight: 700; }
+.hero-offer-rotator > span { grid-area: 1 / 1; white-space: nowrap; opacity: 0; animation: hero-offer-rotate 9s infinite; }
+.hero-offer-rotator > span:nth-child(2) { animation-delay: 3s; }
+.hero-offer-rotator > span:nth-child(3) { animation-delay: 6s; }
+@keyframes hero-offer-rotate {
+  0%, 4%, 27% { opacity: 1; }
+  32%, 100% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-offer-rotator > span { animation: none; }
+  .hero-offer-rotator > span:first-child { opacity: 1; }
+}
+
+/* Slightly reduce the homepage headline on mobile only. */
+@media (max-width: 640px) {
+  .hero .hero-title { font-size: clamp(2.5rem, 10vw, 2.9rem); }
+}
+
+/* Consistent homepage hero composition across mobile widths; only type and controls scale. */
+@media (max-width: 640px) {
+  .hero {
+    min-height: 680px;
+    height: auto;
+    padding: 6rem 0 2.25rem;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-content {
+    width: 100%;
+    padding-block: 0;
+    transform: translateY(-1.3rem);
+    text-align: left;
+  }
+  .hero-content .container {
+    width: min(88%, 390px);
+    max-width: 390px;
+    padding-inline: 0;
+  }
+  .hero-tag {
+    display: inline-block;
+    margin: -2rem 0 .8rem;
+    font-size: clamp(.55rem, 1.55vw, .62rem);
+  }
+  .hero .hero-title {
+    margin: 0 0 .8rem;
+    font-size: clamp(2.5rem, 10vw, 2.9rem);
+    line-height: 1.02;
+    text-align: left;
+  }
+  .hero-title-first,
+  .hero-title-accent { display: block; }
+  .hero-title-accent { color: #d4ad55; }
+  .hero .hero-sub {
+    margin: .2rem 0 .9rem;
+    font-size: clamp(.8rem, 3.4vw, .86rem);
+    line-height: 1.42;
+  }
+  .hero-actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.38fr);
+    gap: clamp(.35rem, 1.7vw, .65rem);
+    margin-top: .8rem;
+  }
+  .hero-actions .btn {
+    width: 100%;
+    min-width: 0;
+    min-height: clamp(36px, 10vw, 42px);
+    padding: .35rem .25rem;
+    font-size: clamp(.62rem, 2.4vw, .78rem);
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+  .hero-actions .btn-outline-white {
+    border-color: #fff;
+    background: #fff;
+    color: #0b2a42;
+  }
+  .hero-trust {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(.5rem, 2.2vw, .9rem) clamp(.55rem, 3vw, 1.1rem);
+    margin-top: .95rem;
+  }
+  .hero-trust span {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: clamp(.25rem, 1.2vw, .5rem);
+    padding-left: 0;
+    font-size: clamp(.62rem, 2.4vw, .76rem);
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+  .hero-trust .trust-check {
+    flex: 0 0 clamp(1.15rem, 5vw, 1.5rem);
+    width: clamp(1.15rem, 5vw, 1.5rem);
+    height: clamp(1.15rem, 5vw, 1.5rem);
+    font-size: clamp(.68rem, 2.8vw, .84rem);
+  }
+  .hero-dots { display: flex; bottom: 2rem; }
+}
