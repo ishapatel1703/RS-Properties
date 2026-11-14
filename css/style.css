@@ -2251,3 +2251,8 @@ section { padding: 5rem 0; }
   }
   .hero-dots { display: flex; bottom: 2rem; }
 }
+
+/* Laptop and wider: show three Nature View Farm amenity cards per row. */
+@media (min-width: 1024px) {
+  .nature-life-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
