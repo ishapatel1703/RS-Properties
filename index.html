@@ -13,7 +13,7 @@
 <!-- NAVBAR -->
 <nav class="navbar transparent">
   <div class="container nav-inner">
-    <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="RS Properties"/></a>
+    <a href="index.html" class="nav-logo"><img src="images/rs-properties-luxury-logo.png" alt="RS Properties"/></a>
     <div class="nav-links">
   <a href="index.html" class="active">Home</a>
   <details class="nav-dropdown">
@@ -48,43 +48,42 @@
 
 <!-- HERO -->
 <section class="hero" aria-label="Hero">
-  <div class="hero-media">
-    <video class="hero-video" autoplay muted loop playsinline aria-label="Bronze horse statue">
-      <source src="media/bronze-horse-statue.mp4" type="video/mp4"/>
-    </video>
+  <div class="hero-media" aria-label="Real estate and lifestyle photos">
+    <div class="hero-slides" aria-hidden="true">
+      <div class="hero-slide active" style="background-image:url('images/waterparklatest.png')" aria-hidden="false"></div>
+      <div class="hero-slide" style="background-image:url('images/family-farm-garden.png')" aria-hidden="true"></div>
+   <div class="hero-slide" style="background-image:url('images/swimmingpool.png')" aria-hidden="true"></div>
+        <div class="hero-slide" style="background-image:url('images/cricketturf.png')" aria-hidden="true"></div>
+        <div class="hero-slide" style="background-image:url('images/gazebo.png')" aria-hidden="true"></div>
+      <!-- <div class="hero-slide" style="background-image:url('images/waterpark\ \(2\).jpg')" aria-hidden="true"></div>
+             
+
+      <div class="hero-slide" style="background-image:url('images/hero-farmland-crops.jpg')" aria-hidden="true"></div>-->
+    </div>
     <div class="hero-overlay"></div>
   </div>
-  <div class="hero-content">
+  <div class="hero-dots" role="group" aria-label="Choose hero image">
+    <button class="hero-dot active" type="button" aria-label="Show country home"></button>
+    <button class="hero-dot" type="button" aria-label="Show farmhouse clubhouse"></button>
+    <button class="hero-dot" type="button" aria-label="Show family garden"></button>
+    <button class="hero-dot" type="button" aria-label="Show swimming pool"></button>
+    <button class="hero-dot" type="button" aria-label="Show quiet farmland"></button>
+    <button class="hero-dot" type="button" aria-label="Show countryside farmland"></button>
+    <button class="hero-dot" type="button" aria-label="Show crop fields at sunset"></button>
+  </div>  <div class="hero-content">
     <div class="container">
       <span class="hero-tag">Farmland &amp; Residential Plots</span>
-      <h1 class="hero-title"><!-- One Team, <br/>Big Dream—-->Your Trusted <br/> Property Partner in Jabalpur</h1>
-      <p class="hero-sub">Buying, Selling, or Renting – We Make Real Estate Simple.</p>
-      <div class="search-panel" style="margin-top:2.2rem">
-        <div class="search-tabs" role="tablist" aria-label="Choose a project">
-          <button class="search-tab active" type="button" role="tab" aria-selected="true" data-project="nature-view-farm">Nature View Farm</button>
-          <button class="search-tab" type="button" role="tab" aria-selected="false" data-project="shree-ramlala-parisar">Shree Ramlala Parisar</button>
-        </div>
-        <div class="search-inputs">
-          <div class="search-field">
-            <span class="icon" aria-hidden="true">&#127968;</span>
-            <input id="hero-project-type" type="text" value="Farmland" aria-label="Project Type" readonly/>
-          </div>
-          <div class="search-field">
-            <span class="icon" aria-hidden="true">&#128221;</span>
-            <select id="hero-interest" aria-label="What would you like to do?">
-              <option value="details">View Project Details</option>
-              <option value="site-visit">Arrange a Site Visit</option>
-              <option value="availability">Ask About Availability</option>
-              <option value="investment">Investment Consultation</option>
-            </select>
-          </div>
-          <button class="search-btn" id="hero-search" type="button">&#128269; Search</button>
-        </div>
-      </div>      <div class="hero-trust">
-        <span>&#10003; 500+ Properties</span>
-        <span>&#10003; 13+ Years Experience</span>
-        <span>&#10003; 1,200+ Happy Families</span>
-        <span>&#10003; Free Consultation</span>
+      <h1 class="hero-title"><!-- One Team, <br/>Big Dream—-->Your Trusted <br/><span class="hero-title-accent">Property Partner</span> <span class="hero-title-tail">in Jabalpur</span></h1>
+      <p class="hero-sub">Discover your dream property with RS Properties, your trusted real estate partner in Jabalpur. Explore residential plots, beautiful farmhouses, and peaceful farmland with a simple, hassle-free property experience.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="nature-view-farm.html">Explore Projects <span aria-hidden="true">&#8594;</span></a>
+        <a class="btn btn-outline-white" href="tel:+919406867777">Call now</a>
+      </div>
+      <div class="hero-trust">
+        <span><i class="trust-check" aria-hidden="true">&#10003;</i> 500+ Properties</span>
+        <span><i class="trust-check" aria-hidden="true">&#10003;</i> 13+ Years Experience</span>
+        <span><i class="trust-check" aria-hidden="true">&#10003;</i> 1,200+ Happy Families</span>
+        <span><i class="trust-check" aria-hidden="true">&#10003;</i> Free Consultation</span>
       </div>
     </div>
   </div>
@@ -120,7 +119,7 @@
             <span class="project-feature-label">Farmland</span>
             <h3>Nature View Farm</h3>
             <p>Explore the farmland project with RS Properties. Ask our team about current availability and arrange a site visit.</p>
-            <div class="project-feature-points"><span>&#10003; Site visit assistance</span><span>&#10003; Documentation support</span></div>
+            <div class="project-feature-points"><span><i class="trust-check" aria-hidden="true">&#10003;</i> Site visit assistance</span><span><i class="trust-check" aria-hidden="true">&#10003;</i> Documentation support</span></div>
             <span class="project-feature-cta">Explore Nature View Farm &rarr;</span>
           </div>
         </div>
@@ -132,7 +131,7 @@
             <span class="project-feature-label">Residential Plots</span>
             <h3>Shree Ramlala Parisar</h3>
             <p>Explore residential plot enquiries with RS Properties. Get current project details and support planning a site visit.</p>
-            <div class="project-feature-points"><span>&#10003; Site visit assistance</span><span>&#10003; Documentation support</span></div>
+            <div class="project-feature-points"><span><i class="trust-check" aria-hidden="true">&#10003;</i> Site visit assistance</span><span><i class="trust-check" aria-hidden="true">&#10003;</i> Documentation support</span></div>
             <span class="project-feature-cta">Explore Shree Ramlala Parisar &rarr;</span>
           </div>
         </div>
@@ -318,7 +317,7 @@
         <a href="contact.html" class="btn btn-secondary btn-lg">Book Free Consultation</a>
         <a href="tel:+919406867777" class="btn btn-outline-white btn-lg">&#128222; +91-9406867777</a>
       </div>
-      <div class="cta-trust"><span>&#10003; No Obligation</span><span>&#10003; Response in 2 Hours</span><span>&#10003; Expert Advice</span></div>
+      <div class="cta-trust"><span><i class="trust-check" aria-hidden="true">&#10003;</i> No Obligation</span><span><i class="trust-check" aria-hidden="true">&#10003;</i> Response in 2 Hours</span><span><i class="trust-check" aria-hidden="true">&#10003;</i> Expert Advice</span></div>
     </div>
     <div class="newsletter-card animate">
       <h3>Property Alerts</h3>
@@ -357,7 +356,7 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <div class="footer-logo"><img src="images/logo.png" alt="Logo"/></div>
+        <div class="footer-logo"><img src="images/rs-properties-luxury-logo.png" alt="RS Properties — Your Dream, Our Commitment"/></div>
         <p class="footer-desc">Your trusted real estate partner in Jabalpur. We help you find the perfect residential or commercial property with professionalism and care.</p>
         <div class="footer-social"><a href="#" class="social-btn">f</a><a href="#" class="social-btn">t</a><a href="#" class="social-btn">in</a><a href="#" class="social-btn">yt</a></div>
       </div>
