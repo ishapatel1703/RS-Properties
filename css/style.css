@@ -257,7 +257,10 @@ h3 { font-size: 1.3rem; }
 }
 @media(min-width:1200px) {
     .hero-content .container { margin-left:3.5vw; margin-right:auto; width:93%; max-width:none; padding-right:2rem; }
-  .hero-title { max-width:660px; font-size:clamp(2.8rem,4.1vw,4rem); line-height:1.08; }
+  .hero-title { max-width:1100px; font-size:clamp(2.6rem,3.6vw,3.6rem); line-height:1.08; }
+  .hero-title-first, .hero-title-accent { display:block; }
+  .hero-title-first { white-space:nowrap; }
+  .hero-title-accent { color:#d4ad55; }
   .hero .hero-overlay { background:linear-gradient(105deg, rgba(3,20,14,.97) 0%, rgba(4,26,18,.91) 37%, rgba(4,26,18,.57) 65%, rgba(4,26,18,.1) 100%); }
 }
 .hero-tag {
@@ -1083,8 +1086,8 @@ section { padding: 5rem 0; }
    ============================================================ */
 .footer { background:var(--primary); color:#fff; padding-top:4rem; }
 .footer-grid {
-  display:grid; gap:2.5rem;
-  grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+  display:grid; gap:2.25rem;
+  grid-template-columns:minmax(0,1.15fr) minmax(130px,.7fr) minmax(0,1.2fr) minmax(0,1fr);
   margin-bottom:3rem;
 }
 .footer-logo { display:inline-flex; align-items:center; background:rgba(255,255,255,.76); padding:3px 4px; border-radius:10px; margin-bottom:1.2rem; }
@@ -1592,16 +1595,32 @@ section { padding: 5rem 0; }
     font-size: .8rem;
   }
 
-  .footer { padding-top: 3rem; }
-  .footer-grid { grid-template-columns: 1fr; gap: 1.8rem; }
+  .footer { padding-top: 2.5rem; }
+  .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.35rem .9rem; margin-bottom: 1.5rem; }
+  .footer-grid > div:first-child, .footer-grid > div:last-child { grid-column: 1 / -1; }
+  .footer-logo { margin-bottom: .75rem; padding: 2px 4px; }
+  .footer-logo img { width: min(100%, 210px); max-height: 48px; }
+  .footer-desc { max-width: 42ch; margin-bottom: .75rem; font-size: .78rem; line-height: 1.55; }
+  .footer-social { gap: .45rem; }
+  .social-btn { width: 32px; height: 32px; font-size: .78rem; }
+  .footer-heading { margin-bottom: .65rem; font-size: .88rem; }
+  .footer-links li { margin-bottom: .45rem; }
+  .footer-links a { font-size: .76rem; line-height: 1.4; }
+  .footer-contact li { gap: .5rem; margin-bottom: .65rem; font-size: .76rem; line-height: 1.45; }
   .footer-bottom {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
+    gap: .6rem;
+    padding: 1rem 0;
+    text-align: center;
+    font-size: .68rem;
   }
 
   .footer-bottom-links {
     flex-wrap: wrap;
-    gap: 1rem;
+    justify-content: center;
+    gap: .75rem;
   }
 
   .wa-float {
@@ -2011,3 +2030,116 @@ section { padding: 5rem 0; }
   .testimonials-section .testimonial-role { font-size: .6rem; }
   .testimonials-section .testimonial-stars { font-size: .7rem; }
 }
+/* Compact the Free Consultation and newsletter area on phones only */
+@media (max-width: 640px) {
+  .cta-section { padding: 2.8rem 0; }
+  .cta-inner { gap: 1.1rem; }
+  .cta-inner > .animate:first-child > .section-tag { font-size: .62rem; }
+  .cta-inner > .animate:first-child > h2 { font-size: clamp(1.4rem, 6.8vw, 1.8rem); line-height: 1.12; margin: .4rem 0 .65rem !important; }
+  .cta-inner > .animate:first-child > p { font-size: .82rem !important; line-height: 1.45; margin-bottom: .9rem !important; }
+  .cta-inner > .animate:first-child > .flex { gap: .45rem; }
+  .cta-inner > .animate:first-child > .flex .btn { min-height: 38px; padding: .5rem .7rem; font-size: .72rem; }
+  .cta-trust { gap: .55rem .8rem; margin-top: .85rem; }
+  .cta-trust span { font-size: .68rem; }
+  .newsletter-card { padding: 1.1rem; border-radius: 16px; }
+  .newsletter-card h3 { font-size: 1.15rem; margin-bottom: .35rem; }
+  .newsletter-card p { font-size: .76rem; line-height: 1.4; margin-bottom: .8rem; }
+  .newsletter-card .nl-field, .newsletter-card .nl-select { height: 40px; padding-inline: .75rem; font-size: .78rem; margin-bottom: .5rem; }
+  .newsletter-card .btn { height: 40px !important; min-height: 40px; padding: .45rem .7rem; font-size: .76rem; }
+  .newsletter-card p:last-child { font-size: .64rem !important; margin-top: .55rem !important; margin-bottom: 0; }
+}
+/* Simple Process: compact mobile layout */
+@media (max-width: 640px) {
+  .simple-process-section { padding: 2.2rem 0; }
+  .simple-process-section .section-header { margin-bottom: .95rem; }
+  .simple-process-section .section-tag { font-size: .58rem; }
+  .simple-process-section .section-title { font-size: clamp(1.25rem, 5.8vw, 1.6rem); line-height: 1.1; margin-bottom: .35rem; }
+  .simple-process-section .section-sub { font-size: .72rem; line-height: 1.35; }
+  .simple-process-section .steps-grid { gap: .85rem; }
+  .simple-process-section .step-num { width: 42px; height: 42px; margin-bottom: .5rem; border-width: 2px; font-size: .92rem; }
+  .simple-process-section .step-card h3 { margin-bottom: .22rem; font-size: .84rem; }
+  .simple-process-section .step-card p { font-size: .69rem; line-height: 1.38; }
+}
+/* Compact the Our Projects cards on phones without changing tablet or desktop layouts. */
+@media (max-width: 640px) {
+  .featured-projects { padding-block: 2.5rem; }
+  .featured-projects .section-title { font-size: clamp(1.5rem, 6vw, 2rem); }
+  .project-list-grid { gap: .65rem; }
+  .project-feature-card { min-height: 285px; border-radius: 15px; }
+  .project-feature-overlay { padding: 1.15rem; }
+  .project-feature-card h3 { margin-bottom: .5rem; font-size: clamp(1.5rem, 7vw, 2rem); }
+  .project-feature-card p { margin-bottom: .75rem; font-size: .94rem; }
+  .project-feature-points { gap: .35rem .75rem; margin-bottom: .85rem; }
+  .project-feature-points span { font-size: .73rem; }
+  .project-feature-label { margin-bottom: .6rem; }
+  .project-feature-cta { font-size: .9rem; }
+}
+
+/* Nature View Farm: show More Than A Plot cards two across. */
+.nature-life-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.nature-life-card-featured,
+.nature-life-card-wide { grid-column: auto; grid-row: auto; }
+@media (max-width: 620px) {
+  .nature-life-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; }
+  .nature-life-card,
+  .nature-life-card-wide { min-height: 250px; padding: .85rem; border-radius: 15px; }
+  .life-icon { top: .65rem; right: .65rem; width: 2.1rem; height: 2.1rem; font-size: 1rem; }
+  .life-copy { max-width: 100%; }
+  .life-kicker { font-size: .58rem; letter-spacing: .08em; }
+  .life-copy h3 { font-size: 1.05rem; }
+  .life-copy p:last-child { font-size: .76rem; line-height: 1.4; }
+}
+
+/* Refine the Nature View Farm mobile cards and hero category accent. */
+.project-page-hero .page-hero-tag { color: #c8e4a1; }
+@media (max-width: 620px) {
+  .nature-life-section .container { width: calc(100% - 1.5rem); }
+  .nature-life-grid { column-gap: .45rem; }
+}
+
+/* Nature View Farm overview: tighter heading and section spacing. */
+.nature-overview-section { padding: 3rem 0 2.25rem; }
+.nature-overview-section .section-header { margin-bottom: 1.75rem; }
+.nature-overview-section .section-title { font-size: clamp(1.8rem, 3.2vw, 2.55rem); }
+.nature-overview-section .section-sub { font-size: .98rem; line-height: 1.5; }
+.nature-overview-section .project-support-grid { margin-top: 0; }
+@media (max-width: 640px) {
+  .nature-overview-section { padding: 2.4rem 0 1.8rem; }
+  .nature-overview-section .section-header { margin-bottom: 1.25rem; }
+  .nature-overview-section .section-title { font-size: 1.65rem; }
+  .nature-overview-section .section-sub { font-size: .9rem; }
+}
+
+/* Mobile-only horizontal slider for Nature View Farm support cards. */
+@media (max-width: 640px) {
+  .nature-overview-section .project-support-grid {
+    display: flex;
+    gap: .75rem;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    padding: .1rem .05rem .6rem;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nature-overview-section .project-support-grid::-webkit-scrollbar { display: none; }
+  .nature-overview-section .service-detail-card {
+    flex: 0 0 min(84%, 330px);
+    min-height: 205px;
+    padding: 1.15rem;
+    border-radius: 16px;
+    scroll-snap-align: start;
+  }
+  .nature-overview-section .sd-header { gap: .75rem; margin-bottom: .8rem; }
+  .nature-overview-section .sd-icon { flex: 0 0 44px; width: 44px; height: 44px; }
+  .nature-overview-section .sd-header h3 { margin-bottom: .35rem; font-size: 1.05rem; }
+  .nature-overview-section .sd-header p { margin-bottom: 0; font-size: .86rem; line-height: 1.45; }
+}
+
+/* Match the Nature View Farm hero category to the site's golden accent. */
+.project-page-hero .page-hero-tag { color: #d4ad55; }
+
+/* Keep the Nature View Farm category label the same color as its hero title. */
+.project-page-hero .page-hero-tag { color: #fff; }
+
+.project-page-hero .nature-view-title { color: #d4ad55; }
